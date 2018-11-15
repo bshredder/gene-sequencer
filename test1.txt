@@ -1,0 +1,3 @@
+,dimple,dominant,none,agtc,recessive,one,tctc
+,foot,dominant,big,gt,recessive,little,agtcagtcagtc
+RT88,foot,fat,recessive,aaaa,skinny,dominant,ccccc
