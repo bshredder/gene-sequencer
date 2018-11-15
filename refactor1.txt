@@ -1,3 +1,0 @@
-UH56,hair color,blonde,recessive,TTCCBlack,dominant,CAGGCAGG
-TZ99,Weight,Heavy,recessive,TCCLight,dominant,GGGG
-WPM987,Cancer,High,recessive,TCGCLow,dominant,CATGGCATGG
