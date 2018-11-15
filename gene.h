@@ -48,8 +48,6 @@ class Gene {
 
 		bool	RunUnitTests();
 
-
-
 	private:
 
 		// determine the genotype - which allele is dominant

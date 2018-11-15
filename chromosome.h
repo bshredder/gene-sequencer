@@ -40,7 +40,7 @@ class ChromosomePair{
 
 		// returns a Gene object that matches a Gene with name 'n'
 		Gene	FindGene(string n);
-
+		
 		// returns a chromosome that is a recombination of one Allele from each of two genes - random selection 
 		ChromosomePair operator+(ChromosomePair rhs);
 

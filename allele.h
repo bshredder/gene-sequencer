@@ -8,7 +8,6 @@
 
 using namespace std;
 
-
 enum expression_type {RECESSIVE = 0, DOMINANT = 1, NONE = 2};
 const static string expression_string[] = {"recessive", "dominant", "none"};
 
@@ -50,10 +49,13 @@ class Allele {
 
 		// unit tests
 		bool RunUnitTests();
-
 };
 
-Allele::Allele(){}
+Allele::Allele(){
+	nucleotideSequence = "";		// e.g. AGTC
+	type = "";						// e.g. Recessive
+	variation = "";					// e.g. Blue eyes
+}
 
 Allele::Allele(string v, string t, string sequence){
 	this->variation = v;	
@@ -112,7 +114,7 @@ bool Allele::operator!=(const Allele& rhs){
 
  bool Allele::RunUnitTests(){
 
-	 bool testStatus = true;
+	 bool testStatus = false;
 
 	// test default constuctor
 	Allele testAllele;
@@ -124,7 +126,14 @@ bool Allele::operator!=(const Allele& rhs){
 	Allele testAllele2("variationTest", "typeTest", "sequenceTest");
 	assert(testAllele2.GetNucleotide() == "sequenceTest");
 	assert(testAllele2.GetVariation() == "variationTest");
-	assert(testAllele2.GetExpressionType() == "typeTest");	
+	assert(testAllele2.GetExpressionType() == "typeTest");
+
+	// test overloaded operator
+	Allele testAllele3("variationTest", "typeTest", "sequenceTest");
+	Allele testAllele4("variationTest", "typeTest", "sequenceTest");			
+	if( testAllele3 == testAllele4 ){
+		testStatus = true;
+	}
 
 	return testStatus;
 }

@@ -31,9 +31,6 @@ int main(int argc, char * argv[]) {
 
     cout << "Gene Sequencer - Program #5" << endl << endl;
 
-	ChromosomePair a, b;
-	bool test = (a == b);
-
 	GeneSequencer sequencer;
 	ChromosomePair newChromosome;
 	int curSelection = EXIT;
