@@ -1,4 +1,8 @@
 
+/*----------------------------------------------------------------------------------------------------
+	ChromosomePair class member function definitions 
+----------------------------------------------------------------------------------------------------*/
+
 #include "chromosome.h"
 
 using namespace std;
@@ -9,6 +13,7 @@ using namespace std;
 	
 	Description: default constructor
 ----------------------------------------------------------------------------------------------------*/
+
 ChromosomePair::ChromosomePair(){
 
 	// seed the random number generator to simulate meiosis
@@ -21,7 +26,8 @@ ChromosomePair::ChromosomePair(){
 	
 	Description: given a gene name - finds it in the collection of genes if it exists
 ----------------------------------------------------------------------------------------------------*/
-Gene ChromosomePair::FindGene(string name){
+
+Gene ChromosomePair::FindGene(const string& name){
 	
 	Gene match;
 
@@ -39,6 +45,7 @@ Gene ChromosomePair::FindGene(string name){
 	
 	Description: given two chromosomes produces a chromosome pair with dominant alleles
 ----------------------------------------------------------------------------------------------------*/
+
 ChromosomePair ChromosomePair::operator+(ChromosomePair rhs){
 
 	ChromosomePair newPair;
@@ -88,7 +95,10 @@ ChromosomePair ChromosomePair::operator+(ChromosomePair rhs){
 }
 
 
- 
+ /*----------------------------------------------------------------------------------------------------
+	Overloaded operator==
+----------------------------------------------------------------------------------------------------*/
+
 bool ChromosomePair::operator==(const ChromosomePair& rhs){
 
 	bool isEqual = false;
@@ -109,6 +119,11 @@ bool ChromosomePair::operator==(const ChromosomePair& rhs){
 	return isEqual;
 }
 
+
+ /*----------------------------------------------------------------------------------------------------
+	Overloaded operator!=
+----------------------------------------------------------------------------------------------------*/
+
 bool ChromosomePair::operator!=(const ChromosomePair& rhs){
 	return !(*this == rhs);
 }
@@ -118,6 +133,7 @@ bool ChromosomePair::operator!=(const ChromosomePair& rhs){
 	
 	Description: given a valid filename, create a collection of gene objects 
 ----------------------------------------------------------------------------------------------------*/
+
 void ChromosomePair::InputFromFile(ifstream& file){
 
 	//ifstream file( f );
@@ -204,8 +220,15 @@ void ChromosomePair::AnalyzeGenotype(){
 	}
 }
 
+/*----------------------------------------------------------------------------------------------------
+	RunUnitTests()
+	
+	Description: 
+----------------------------------------------------------------------------------------------------*/
+
 bool ChromosomePair::RunUnitTests(){
 
+	// TODO @schroeder implment ChromosomePair unit tests
 	bool testStatus = true;
 	return testStatus;
 }
