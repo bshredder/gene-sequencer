@@ -31,6 +31,9 @@ int main(int argc, char * argv[]) {
 
     cout << "Gene Sequencer - Program #5" << endl << endl;
 
+	Allele a;
+	Allele b();
+
 	GeneSequencer sequencer;
 	ChromosomePair newChromosome;
 	int curSelection = EXIT;
