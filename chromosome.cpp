@@ -43,54 +43,73 @@ Gene ChromosomePair::FindGene(const string& name){
 /*----------------------------------------------------------------------------------------------------
 	Overloaded operator+ 
 	
-	Description: given two chromosomes produces a chromosome pair with dominant alleles
+	Description: 	Given two chromosomes simulates meiosis by creating a new chromosome that inherits
+					according to the probablities of a punnette square the alleles from both parent
+					chromosomes
 ----------------------------------------------------------------------------------------------------*/
 
 ChromosomePair ChromosomePair::operator+(ChromosomePair rhs){
 
-	ChromosomePair newPair;
-	int randomSelection = 0;
+	const int 		TWO_DOMINANT = 0;
+	const int 		TWO_RECESSIVE = 1;
+	const int 		DOMINANT_AND_RECESSIVE = 2;
+	const int 		MAX_ALLELE_COMBINATIONS = 4;	
 
-	Allele 	newAlleleA, newAlleleB;
+	ChromosomePair 	newPair;
+	Allele 			newAlleleA, newAlleleB;	
+	int 			randomSelection = 0;
 
-	// pick one of two alleles randomly from each gene in this chromosome
-	// pick one of two alleles randomly from each matchin gene in rhs
 	for (Gene g : this->genes){
 
-		// coin flip to see which allele gets passed on from this gene
-		randomSelection = rand()%2; 
-		if( 0 == randomSelection){
-			// pass on allele a
-			newAlleleA = g.GetAlleleA();
-		}
-		else if(1 == randomSelection){
-			// pass on allele b
-			newAlleleA = g.GetAlleleB();
-		}
-		else{
-			cout << "ERROR in Chromosome operator" << endl;
-		}
+		// create a punnette square for the two genes of the two chomosomes	
+		PunnetteSquare pSquare(g, rhs.FindGene(g.GetName()));
 
-		// coin flip to see which allele gets passed on from rhs gene
-		randomSelection = rand()%2; 
-		if( 0 == randomSelection){
-			// pass on allele a
-			newAlleleB = rhs.FindGene(g.GetName()).GetAlleleA();
+		// given the two chromosomes calculate probabilities of meiosis outcome with a Punnette Square
+		double probDD = pSquare.CalculateDominantProbablity();
+		double probrr = pSquare.CalculateRecessiveProbablity();
+		double probDr = pSquare.CalculateDominantRecessiveProbablity();
+
+		// create a 'allele drawer' with the Punnette Square proportions
+		int probabiltyMask[MAX_ALLELE_COMBINATIONS];
+
+		// calculate how many of each type of allele to put in the 'drawer' 
+		int numDom 		= probDD * MAX_ALLELE_COMBINATIONS;
+		int numRec 		= probrr * MAX_ALLELE_COMBINATIONS;
+		int numDomRec 	= probDr * MAX_ALLELE_COMBINATIONS;
+		
+		// put the alleles in the 'drawer'
+		int index = 0;
+		for(index = 0; index < numDom; index++){probabiltyMask[index] = TWO_DOMINANT;}
+		for(;index < numRec; index++){probabiltyMask[index] = TWO_RECESSIVE;}
+		for(;index < numDomRec; index++){probabiltyMask[index] = DOMINANT_AND_RECESSIVE;}		
+
+		// randomly pick an allele from the probablitically determined 'drawer' of alleles  		
+		randomSelection = rand() % MAX_ALLELE_COMBINATIONS;
+
+		if(probabiltyMask[randomSelection] == TWO_DOMINANT  ){
+			// pass on two dominant alleles
+			newAlleleA = pSquare.GetDominantAllele();
+			newAlleleB = pSquare.GetDominantAllele();
 		}
-		else if(1 == randomSelection){
-			// pass on allele b
-			newAlleleB = rhs.FindGene(g.GetName()).GetAlleleB();
+		else if(probabiltyMask[randomSelection] == TWO_RECESSIVE ){
+			// pass on two recessive alleles
+			newAlleleA = pSquare.GetRecessiveAllele();
+			newAlleleB = pSquare.GetRecessiveAllele();
+		}
+		else if(probabiltyMask[randomSelection] == DOMINANT_AND_RECESSIVE){
+			// pass on dom & rec alleles
+			newAlleleA = pSquare.GetDominantAllele();
+			newAlleleB = pSquare.GetRecessiveAllele();
 		}
 		else{
-			cout << "ERROR in Chromosome operator" << endl;
-		}		
-	
+			cout << "ERROR: Chromosome meiosis" << endl;
+		}
+		
 		Gene newGene(newAlleleA, newAlleleB);
 		newGene.SetName(g.GetName());
 		newGene.SetTrait(g.GetTrait());
 		newPair.AddGene(newGene);
 	} 
-
 	return newPair;
 }
 
@@ -228,8 +247,64 @@ void ChromosomePair::AnalyzeGenotype(){
 
 bool ChromosomePair::RunUnitTests(){
 
-	// TODO @schroeder implment ChromosomePair unit tests
+	// TODO @schroeder implement generic streams file and string streams
 	bool testStatus = true;
+
+	/*
+		test data
+		rR - UH56,hair color,blonde,recessive,TTCC,Black,dominant,CAGG
+		rr - MADEUP1,earlobes,connected,recessive,TCGC,connected,recessive,TCGC
+		RR - MADEUP2,earlobes,unconnected,dominant,TC,unconnected,dominant,TC
+	*/
+
+	// create test data; alleles, genes, punnette squares
+	Allele allele_r("blonde", "recessive", "TTCC");
+	Allele allele_R("Black", "dominant", "CAGG");
+	Gene rr(allele_r, allele_r);
+	Gene rR(allele_r, allele_R);
+	Gene RR(allele_R, allele_R);
+	PunnetteSquare ps_rr_rr(rr, rr);
+	PunnetteSquare ps_rR_rR(rR, rR);
+	PunnetteSquare ps_RR_RR(RR, RR);
+	PunnetteSquare ps_RR_rr(RR, rr);
+	PunnetteSquare ps_rR_rr(rR, rr);
+
+	// test punnette squares
+	cout << "double recessive: should be 100% recessive " << endl;
+	cout << "Calculate recessive: " << ps_rr_rr.CalculateRecessiveProbablity() << endl;
+	cout << "Calculate dominant: " << ps_rr_rr.CalculateDominantProbablity() << endl;
+	cout << "Calculate dominant/recessive: " << ps_rr_rr.CalculateDominantRecessiveProbablity() << endl;
+	ps_rr_rr.PrintSquare();
+	
+	cout << "double dominant: should be 100% dominant " << endl;
+	cout << "Calculate recessive: " << ps_RR_RR.CalculateRecessiveProbablity() << endl;
+	cout << "Calculate dominant: " << ps_RR_RR.CalculateDominantProbablity() << endl;
+	cout << "Calculate dominant/recessive: " << ps_RR_RR.CalculateDominantRecessiveProbablity() << endl;
+	ps_RR_RR.PrintSquare();	
+
+	cout << "recessive/dominant + recessive/dominant: should be 50% d/r " << endl;
+	cout << "Calculate recessive: " << ps_rR_rR.CalculateRecessiveProbablity() << endl;
+	cout << "Calculate dominant: " << ps_rR_rR.CalculateDominantProbablity() << endl;
+	cout << "Calculate dominant/recessive: " << ps_rR_rR.CalculateDominantRecessiveProbablity() << endl;
+	ps_rR_rR.PrintSquare();
+
+
+	// test adding chromosomes
+	ChromosomePair c1, c2, c3;
+	c1.AddGene(rr);
+	c2.AddGene(rr);
+	c3 = c1 + c2;
+
+	ChromosomePair c4, c5, c6;
+	c4.AddGene(RR);
+	c5.AddGene(RR);
+	c6 = c4 + c5;
+
+	ChromosomePair c7, c8, c9;
+	c7.AddGene(rR);
+	c8.AddGene(rR);
+	c9 = c7 + c8;
+
 	return testStatus;
 }
 

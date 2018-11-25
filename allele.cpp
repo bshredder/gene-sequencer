@@ -36,6 +36,19 @@ Allele::Allele(const string& v, const string& t, const string& sequence){
 }
 
 /*----------------------------------------------------------------------------------------------------
+	IsDominant() returns true if allele is dominant, else false
+----------------------------------------------------------------------------------------------------*/
+
+bool Allele::IsDominant(){
+
+	bool dominant = false;
+	if(this->type == expression_string[DOMINANT]){
+		dominant = true;
+	}
+	return dominant;
+}
+
+/*----------------------------------------------------------------------------------------------------
 	SetExpressionType( string theExpressionType )
 	
 	Description: 	Setter method for expression type. Allows a user to enter variants of string

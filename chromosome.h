@@ -17,6 +17,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include "gene.h"
+#include "punnetteSquare.h"
 
 
 using namespace std;
@@ -43,6 +44,9 @@ class ChromosomePair{
 
 		// returns a Gene object that matches a Gene with name 'n'
 		Gene	FindGene(const string& n);
+
+		// returns a Gene object that matches a gene index i
+		Gene	FindGene(const int i) {return this->genes.at(i);}
 		
 		// returns a chromosome that is a recombination of one Allele from each of two genes - random selection 
 		ChromosomePair operator+(ChromosomePair rhs);
@@ -57,9 +61,8 @@ class ChromosomePair{
 
 		vector<Gene> 	genes;
 		string 			fileName;
+		PunnetteSquare	ps;
 };
-
-
 
 
 #endif

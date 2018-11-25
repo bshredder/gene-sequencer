@@ -35,6 +35,9 @@ class Allele {
 		// writes state data of this allele to filestream
 		void	WriteAlleleToFile(ofstream& of);
 
+		// returns true if Allele trait is dominant
+		bool IsDominant();
+
 		// accessor methods
 		string GetNucleotide() const {return nucleotideSequence;}
 		string GetExpressionType() const {return type;}

@@ -52,6 +52,8 @@ int main(int argc, char * argv[]) {
 			case OUTPUT:
 				sequencer.ExportChromosomePair(newChromosome);
 				break;
+			case EXIT:
+				break;
 			default:
 				cout << "ERROR: Invalid Selection" << endl;
 				break;

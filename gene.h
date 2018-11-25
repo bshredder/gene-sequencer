@@ -16,7 +16,6 @@
 
 using namespace std;
 
-
 class Gene {
 
 	public:
@@ -55,7 +54,7 @@ class Gene {
 	private:
 
 		// determine the genotype - which allele is dominant
-		expression_type CalculateExpression();
+		expression_type CalculateExpression();		
 
 		string  	name;
 		string		traitType;

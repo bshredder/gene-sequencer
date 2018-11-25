@@ -1,3 +1,5 @@
 UH56,hair color,blonde,recessive,TTCC,Black,dominant,CAGG
 TZ99,Weight,Heavy,recessive,TCC,Light,dominant,GG
 WPM987,Cancer,High,recessive,TCGC,Low,dominant,CATGG
+MADEUP1,earlobes,connected,recessive,TCGC,connected,recessive,TCGC
+MADEUP2,earlobes,unconnected,dominant,TC,unconnected,dominant,TC
