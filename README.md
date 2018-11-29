@@ -26,8 +26,10 @@ image below shows the relationship of the chromosome pair, genes and
 alleles.
 
 ![Image result for simple model chromosome gene
-allele](media/image1.jpeg){width="2.6979166666666665in"
+allele](image1.jpeg){width="2.6979166666666665in"
 height="2.0208333333333335in"}
+
+
 
 The point of the assignment is to practice object oriented design and
 programming (OOD/OOP) The theme of the assignment loosely follows
@@ -68,7 +70,7 @@ the biology to program the assignment.
 
     -   GeneSequencer
 
-![](media/image2.png){width="6.5in" height="3.6555555555555554in"}
+![](image2.png){width="6.5in" height="3.6555555555555554in"}
 
 3.  Implement Input/Output functionality - the program allows a user to
     write and read chromosome data to/from a file. Each class has
