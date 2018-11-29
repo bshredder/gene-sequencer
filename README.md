@@ -25,10 +25,12 @@ chromosome, the dominant alleles will be output as the genotype. The
 image below shows the relationship of the chromosome pair, genes and
 alleles.
 
+
 ![Image result for simple model chromosome gene
 allele](image1.jpeg)
 
 *Diagram 1 - Relationship of Alleles to Genes*
+
 
 
 
@@ -45,17 +47,17 @@ the biology to program the assignment.
     selects "Exit". The menu functionality should be written as a
     function in main.cpp and contain at minimum the following choices;
 
-    -   1 -- Create chromosome
+    - Create chromosome
 
-    -   2 -- Analyze chromosome
+    - Analyze chromosome
 
-    -   3 -- Output chromosome to file
+    - Output chromosome to file
 
-    -   4 -- Input chromosome from file
+    - Input chromosome from file
 
-    -   5 -- Combine chromosomes
+    - Combine chromosomes
 
-    -   6 -- Exit
+    - Exit
 
 2.  Design and define the program's classes. The program uses Object
     Oriented Programming (OOP) concepts to model the problem. See
@@ -63,13 +65,15 @@ the biology to program the assignment.
     interfaces. You are free to add additional classes and methods,
     however, the program must define at minimum the following classes;
 
-    -   Allele
+    - Allele
 
-    -   Gene
+    - Gene
 
-    -   Chromosome (or ChromosomePair)
+    - Chromosome (or ChromosomePair)
 
-    -   GeneSequencer
+    - GeneSequencer
+
+
 
 ![](image2.png)
 
@@ -79,28 +83,32 @@ the biology to program the assignment.
     write and read chromosome data to/from a file. Each class has
     methods to either write to a file, read from a file or to do both.
 
-    -   The file format is a comma separated (csv) file that contains in
+    - The file format is a comma separated (csv) file that contains in
         each row the data for a gene.
 
-    -   The exact format in the order it should be written and read from
+    - The exact format in the order it should be written and read from
         the file for each row is;
 
+````
 > *\<gene name\>, \<gene trait\>, \<alleleA variant\>, \<alleleA type\>,
 > \<alleleA nucleotide sequence\>, \<alleleB variant\>, \<allele
 > type\>,\<alleleB nucleotide sequence\>*
+````
 
--   A specific example of the data for two (2) genes in csv format is:
+    - A specific example of the data for two (2) genes in csv format is:
 
+````
 > *UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG*
->
 > *WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG*
+````
 
-4.  Display the genotype - the program allows a user to view the
-    genotype of a chromosome (AnalyzeGenotype method). The genotype is
-    determined by selecting the dominant or 'expressed' allele of each
+4.  Display the phenotype - the program allows a user to view the
+    phenotype of a chromosome (AnalyzeGenotype method). In your program 
+	the phenotype is determined by selecting the dominant or 'expressed' allele of each
     gene in the Chromosome and displaying the list of expressed genes in
     the following format.
 
+````
 > *Gene 1*
 
 -   *Name: UH56*
@@ -112,8 +120,10 @@ the biology to program the assignment.
 -   *Nucleotide sequence: CATGTAC*
 
 > *Gene 2 ...*
+````
 
-## Requirements -- Part B**
+
+## Requirements -- Part B
 
 Part B adds additional "advanced" functionality, and builds out a set of
 power on self-tests (POST tests) typical on an embedded device. The
@@ -121,6 +131,7 @@ class definitions for the GeneSequencer and Chromosome classes are
 provided below. You are free to add additional public or private methods
 and data, however, you must implement the specified methods in the class
 definitions below;
+
 
 5.  Implement all remaining functionality described in the following
     class definitions
@@ -189,6 +200,7 @@ class ChromosomePair{
 };
 ````
 
+
 6.  Implement unit tests for each class. Implement a "POST" or
     PowerOnSelfTest() in the GeneSequencer class that will call each
     classes unit tests.
@@ -198,13 +210,14 @@ class ChromosomePair{
 
 8.  Archive project to your github account
 
+
+
 **Sample Output**
 
-***Here is an example of a valid user interaction output for the
-program:***
+*Here is an example of a valid user interaction output for the
+program:*
 
-Menu Display
-
+````
 > MENU
 >
 > 1 -- Create chromosome
@@ -292,6 +305,9 @@ What file would you like to export to?
 User selects menu item 5
 
 > Thank you -- goodbye
+````
+
+
 
 **Sections from the reading that may help**
 
@@ -321,10 +337,10 @@ receive 100 percent.
 
 1.  Zero credit if:
 
--   You do not hand in a project -- always hand in what you have,
+    - You do not hand in a project -- always hand in what you have,
     partial credit is better than no credit
 
--   Your code does not compile to completion.
+	- Your code does not compile to completion.
 
 2.  You will receive up to ten points off if compiling your code
     produces *any* warnings, or has incorrect use of const(s) or
