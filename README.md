@@ -1,6 +1,6 @@
-**Programming Project - Gene Sequencer **
+#Programming Project - Gene Sequencer#
 
-**Assignment \#5 **
+##Assignment \#5##
 
 **Learning Objectives**
 
@@ -349,7 +349,7 @@ If all requirements are met you will receive 100 percent.
 
 Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities.
 
-![](punnet.png)
+![](punnet2.jpg)
 Diagram 3 - Punnette Square probabilities
 
 
