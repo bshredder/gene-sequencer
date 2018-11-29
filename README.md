@@ -1,6 +1,6 @@
-*Gene Sequencer*
+#Gene Sequencer
 
-*Programming Assignment \#5*
+##Programming Assignment \#5
 
 **Learning Objectives**
 
@@ -38,7 +38,7 @@ gives the programming assignment an interesting theme for you. Please
 don't get tripped up on the theme -- it is not necessary to understand
 the biology to program the assignment.
 
-**Specification - Part A**
+##Specification - Part A
 
 1.  Create a user menu that displays a menu of choices until user
     selects "Exit". The menu functionality should be written as a
@@ -111,7 +111,7 @@ Diagram 2 - Class Relationships
 
 > *Gene 2 ...*
 
-**Specification -- Part B**
+##Specification -- Part B**
 
 Part B adds additional "advanced" functionality, and builds out a set of
 power on self-tests (POST tests) typical on an embedded device. The
