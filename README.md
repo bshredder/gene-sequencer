@@ -1,6 +1,6 @@
-#Gene Sequencer
+# Gene Sequencer
 
-##Programming Assignment \#5
+## Programming Assignment \#5
 
 **Learning Objectives**
 
