@@ -1,6 +1,6 @@
-#Programming Project - Gene Sequencer#
+*Gene Sequencer*
 
-##Assignment \#5##
+*Programming Assignment \#5*
 
 **Learning Objectives**
 
