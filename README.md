@@ -26,8 +26,8 @@ image below shows the relationship of the chromosome pair, genes and
 alleles.
 
 ![Image result for simple model chromosome gene
-allele](image1.jpeg){width="2.6979166666666665in"
-height="2.0208333333333335in"}
+allele](image1.jpeg)
+Diagram 1 - Relationship of Alleles to Genes
 
 
 
@@ -70,7 +70,8 @@ the biology to program the assignment.
 
     -   GeneSequencer
 
-![](image2.png){width="6.5in" height="3.6555555555555554in"}
+![](image2.png)
+Diagram 2 - Class Relationships
 
 3.  Implement Input/Output functionality - the program allows a user to
     write and read chromosome data to/from a file. Each class has
@@ -346,6 +347,9 @@ If all requirements are met you will receive 100 percent.
 
 **Extra credit**
 
-Up to five (5) extra points for additional operator overloading, use of
-this-\>, or use of inheritance.
+Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities.
+
+![](punnet.png)
+Diagram 3 - Punnette Square probabilities
+
 
