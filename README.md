@@ -27,6 +27,7 @@ alleles.
 
 ![Image result for simple model chromosome gene
 allele](image1.jpeg)
+
 Diagram 1 - Relationship of Alleles to Genes
 
 
@@ -38,7 +39,7 @@ gives the programming assignment an interesting theme for you. Please
 don't get tripped up on the theme -- it is not necessary to understand
 the biology to program the assignment.
 
-##Specification - Part A
+## Requirements - Part A
 
 1.  Create a user menu that displays a menu of choices until user
     selects "Exit". The menu functionality should be written as a
@@ -71,6 +72,7 @@ the biology to program the assignment.
     -   GeneSequencer
 
 ![](image2.png)
+
 Diagram 2 - Class Relationships
 
 3.  Implement Input/Output functionality - the program allows a user to
@@ -111,7 +113,7 @@ Diagram 2 - Class Relationships
 
 > *Gene 2 ...*
 
-##Specification -- Part B**
+## Requirements -- Part B**
 
 Part B adds additional "advanced" functionality, and builds out a set of
 power on self-tests (POST tests) typical on an embedded device. The
@@ -123,81 +125,67 @@ definitions below;
 5.  Implement all remaining functionality described in the following
     class definitions
 
+```
 class GeneSequencer{
 
     public:
 
-        // default constructor
-
+        // chromosome factory
         ChromosomePair  CreateChromosomePair();
 
         // returns a chromosome object from data in \'filename\'
-
-        ChromosomePair  ImportChromosomePair(const string& fileName =
-\"\");
+        ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
 
         // saves chromosome \'c\' data to file \'filename\'
+        void ExportChromosomePair(ChromosomePair c, const string& fileName = \"\");
 
-        void ExportChromosomePair(ChromosomePair c, const string&
-fileName = \"\");
-
-        // returns chromosome from \'x\' and \'y\' genes - allele
-selection is random
-
+        // returns chromosome from \'x\' and \'y\' genes - allele selection based on punnet probablity
         ChromosomePair  DoMeiosis(ChromosomePair x, ChromosomePair y);
 
-        // outputs genotype (dominant alleles for each gene) in \'c\'
-
+        // outputs phenotype (dominant alleles for each gene) in \'c\'
         void SequenceChromosomePair(ChromosomePair c);
 
-        // executes all unit tests on each object. Returns true if all
-tests pass
-
+        // executes all unit tests on each object. Returns true if all tests pass
         bool PowerOnSelfTest();
+````
 
-lass ChromosomePair{
+````
+class ChromosomePair{
 
     public:
 
         // default constructor
-
         ChromosomePair();
 
         // outputs genotype which is each dominant allele in each gene
-
         void AnalyzeGenotype();     
 
         // configures this chromosome with data from filestream \'ifs\'
-
         void    InputFromFile(ifstream& ifs);
 
-        // writes the state data from this chromosome to filestream
-\'ofs\'
-
+        // writes the state data from this chromosome to filestream \'ofs\'
         void    OutputToFile(ofstream& ofs);
 
         // adds a new Gene object \'g\' to a collection in this object
-
         void    AddGene(Gene g);
 
         // returns a Gene object that matches a Gene with name \'n\'
-
         Gene    FindGene(string n);
 
-        // returns a chromosome that is a recombination of one Allele
-from each of two genes - random selection
-
+        // returns chromosome from \'x\' and \'y\' genes 
+		// allele selection based on either random selection or punnet probablity
         ChromosomePair operator+(ChromosomePair rhs);
 
+		// tests basic functionality of class
         bool RunUnitTests();
 
     private:
 
         vector\<Gene\>    genes;
-
         string          fileName;
 
 };
+````
 
 6.  Implement unit tests for each class. Implement a "POST" or
     PowerOnSelfTest() in the GeneSequencer class that will call each
@@ -350,6 +338,7 @@ If all requirements are met you will receive 100 percent.
 Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities.
 
 ![](punnet2.jpg)
+
 Diagram 3 - Punnette Square probabilities
 
 
