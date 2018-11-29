@@ -28,7 +28,7 @@ alleles.
 ![Image result for simple model chromosome gene
 allele](image1.jpeg)
 
-Diagram 1 - Relationship of Alleles to Genes
+*Diagram 1 - Relationship of Alleles to Genes*
 
 
 
@@ -73,7 +73,7 @@ the biology to program the assignment.
 
 ![](image2.png)
 
-Diagram 2 - Class Relationships
+*Diagram 2 - Class Relationships*
 
 3.  Implement Input/Output functionality - the program allows a user to
     write and read chromosome data to/from a file. Each class has
@@ -147,6 +147,8 @@ class GeneSequencer{
 
         // executes all unit tests on each object. Returns true if all tests pass
         bool PowerOnSelfTest();
+};
+
 ````
 
 ````
@@ -339,6 +341,7 @@ Up to five (5) extra points for implmenting the Chromosome overloaded operator+ 
 
 ![](punnet2.jpg)
 
-Diagram 3 - Punnette Square probabilities
+*Diagram 3 - Punnette Square probabilities*
+
 
 
