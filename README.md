@@ -4,14 +4,14 @@
 
 **Learning Objectives**
 
-This project has multiple parts that focus on different learning objectives. The first part provides: Practice developing abstract data types (ADTs) using object oriented design (OOD). You will be defining and implementing classes, using file streams, references, and writing unit tests. The second part builds on the first and provides experience using ADTs to model a system. It also provides practice implementing operator overloading and algorithm design. The entire program is also a review of flow control logic, selection, and looping.
+This project has multiple parts that focus on different learning objectives. the first part provides: Practice developing abstract data types (ADTs) using object oriented design (OOD). You will be defining and implementing classes, using file streams, references, and writing unit tests. The second part builds on the first and provides experience using ADTs to model a system. It also provides practice implementing operator overloading and algorithm design. The entire program is also a review of flow control logic, selection, and looping.
 
 **Summary**
 
 A Gene Sequencer is a scientific instrument used to automate the DNA sequencing process. Our gene
 sequencer will be a bit different than the real thing but it provides a (hopefully) fascinating theme for practicing object oriented design and programming. One of the many perks of software engineering is that it affords you the opportunity to dive into fascinating topics with subject matter experts from a range of fields that need your expertise to help them model their problems and translate them into software.  
 
-The first part of the project will focus on modeling the basic biology through OOD/OOP. You will code a simplified model of chromosomes. Chromosomes wil be designed as collections of genes. Each gene will contains alleles. Alleles will contain specific trait data, nucleotide sequences and will be tagged as either dominant or recessive. 
+The first part of the project will focus on modeling the basic biology through OOD/OOP. You will code a simplified model of chromosome pairs. chromosome pairs wil be designed as collections of genes. Each gene will contains alleles. Alleles will contain specific trait data, nucleotide sequences, and will be tagged as either dominant or recessive. 
 
 
 
@@ -22,13 +22,13 @@ allele](image1.jpeg)
 
 
 
-In the next part of the project you will use the classes you designed and implemented to model chromosomes, genes, and alleles to develop an abstraction of a Gene Sequencer. The Gene Sequencer will provide a basic UI (menu), allow a user to create chromosomes, import and export chromosomes from a file, analyze and combine (meiosis) them. 
+In the next part of the project you will use the classes you designed and implemented to model chromosome pairs, genes, and alleles to develop an abstraction of a Gene Sequencer. The Gene Sequencer will provide a basic UI (menu), allow a user to create chromosome pairs, import and export chromosome pairs from a file, analyze and combine (meiosis) them. 
 
 To summarize, this is a programming assignment intended to practice object oriented design and programming (OOD/OOP). The theme of the assignment is loosely based on biology and technology specific to genetics. The theme is meant to be motivating and connect programming to real world problems. Please, don't get tripped up on the theme -- it is not necessary at all to understand genetics to program the assignment. Have fun!
 
 ## Part A - Overview
 
-In Part A, you will design the classes that model a chromosome, test the classes, and organize the project into header and source files. The program uses Object Oriented Programming (OOP) concepts to model the problem. See diagram and class definitions below for the class architecture and public interfaces.
+In Part A, you will design the classes that model a chromosome pair, test the classes, and organize the project into header and source files. The program uses Object Oriented Programming (OOP) concepts to model the problem. See diagram and class definitions below for the class architecture and public interfaces.
 
 
 ![](image2.png)
@@ -36,13 +36,16 @@ In Part A, you will design the classes that model a chromosome, test the classes
 *Diagram 2 - Class Relationships*
 
 
+This is a logical model vs a physical model. Genes are abstractions of positions on a chromosome. A gene is defined by its linear position in nucleotide units of measure. Allels are variants of the same gene encoded in each of the two chromosomes (diploid organism). In our logical model we represent a chromosome as a collection of genes - each having two alleles. 
+
+
 ### Part A - Requirements
 
-1.  Define and implement the classes that model a chromosome and its constituent parts.  You are free to add additional classes and methods.
+1.  Define and implement the classes that model a chromosome pair and its constituent parts.  You are free to add additional classes and methods.
 
     - class Allele
     - class Gene
-    - class Chromosome 
+    - class chromosome pair 
 	- class PunneteSquare (extra credit)
 
 2.  Implement unit tests for each class.
@@ -55,20 +58,20 @@ In Part A, you will design the classes that model a chromosome, test the classes
 
 
 ````
-class Chromosome{
+class ChromosomePair{
 
     public:
 
         // default constructor
-        Chromosome();
+        ChromosomePair();
 
         // outputs pheonotype -  each dominant allele in each gene
         void 	AnalyzePhenotype();     
 
-        // configures this chromosome with data from filestream \'ifs\'
+        // configures this chromosome pair with data from filestream \'ifs\'
         void    InputFromFile(ifstream& ifs);
 
-        // writes the state data from this chromosome to filestream \'ofs\'
+        // writes the state data from this chromosome pair to filestream \'ofs\'
         void    OutputToFile(ofstream& ofs);
 
         // adds a new Gene object \'g\' to a collection in this object
@@ -77,11 +80,11 @@ class Chromosome{
         // returns a Gene object that matches a Gene with name \'n\'
         Gene    FindGene(string n);
 
-        // returns chromosome from \'x\' and \'y\' genes 
+        // returns chromosome pair from \'x\' and \'y\' genes 
 		// allele selection based on either random selection or punnette probablity
-        Chromosome operator+(Chromosome& rhs);
+        ChromosomePair operator+(ChromosomePair& rhs);
 
-		// returns true if chromosomes are equivalent
+		// returns true if chromosome pairs are equivalent
 		bool operator==(Chromosme& rhs);
 
 		// tests basic functionality of class
@@ -98,7 +101,7 @@ class Chromosome{
 
 **Specification for input/output methods**
 
-The program allows a user to write and read chromosome data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
+The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
     - 	The file format is a comma separated (csv) file that contains in each row the data for a gene. The
 		exact format in the order it should be written and read from the file for each row is;
@@ -118,20 +121,20 @@ The program allows a user to write and read chromosome data to/from a file. Each
 
 **Specification for overloading operator+**
 
-When a user of your Chromosome class does the following;
+When a user of your chromosome pair class does the following;
 
 		````
-		Chromosome C1, C2, C3;
+		ChromosomePair C1, C2, C3;
 
 		...
 
-		// creates a new chromosome from two existing chromosmes
+		// creates a new chromosome pair from two existing chromosmes
 		// select two (2) of the four (4) alleles from each gene 
 		C3 = C1 + C2;
 		
 		````
 
-We want the result (C3) to be the 'simulated result of the biological combining of two chromosomes - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
+We want the result (C3) to be the 'simulated result of the biological combining of two chromosome pair pairs - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
 
 
 ## Part B - Overview
@@ -149,22 +152,22 @@ class GeneSequencer{
 		// displayes menu to user
 		void DisplayUserMenu();
 
-		void AnalyzeChromosome();
+		void AnalyzeChromosomePair();
 
         // executes all unit tests on each object. Returns true if all tests pass
         bool PowerOnSelfTest();		
 
 	private:
 
-		Chromosome c;
+		ChromosomePair c;
 
-        // Creates a chromosome object
-        Chromosome  CreateChromosome();
+        // Creates a ChromosomePair object
+        ChromosomePair  CreateChromosomePair();
 
-        // returns a chromosome object from data in \'filename\'
+        // returns a ChromosomePair object from data in \'filename\'
         ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
 
-        // saves chromosome \'c\' data to file \'filename\'
+        // saves ChromosomePair \'c\' data to file \'filename\'
         void ExportChromosomePair(ChromosomePair c, const string& fileName = \"\");
 
         // returns chromosome from \'x\' and \'y\' genes - allele selection based on punnet probablity
@@ -185,7 +188,7 @@ Create a user menu that displays the following choices until user selects "Exit"
     - Analyze chromosome
     - Output chromosome to file
     - Input chromosome from file
-    - Combine chromosomes
+    - Combine chromosome pairs
     - Exit
 
 
@@ -224,7 +227,7 @@ Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype
 			>
 			> 4 -- Input chromosome from file
 			>
-			> 5 -- Combine chromosomes
+			> 5 -- Combine chromosome pairs
 			>
 			> 6 -- Exit
 			>
@@ -284,7 +287,7 @@ Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype
 
 			> *USER INPUT: test.txt*
 			>
-			> *A chromosome object is created and available for analysis based on
+			> *A chromosome pair object is created and available for analysis based on
 			> test.txt*
 
 			User selects menu item 4
@@ -350,7 +353,7 @@ If all requirements are met you will receive 100 percent.
 
 **Extra credit**
 
-Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities for the four (4) alleles.
+Up to five (5) extra points for implmenting the chromosome pair overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities for the four (4) alleles.
 
 ![](punnet2.jpg)
 
