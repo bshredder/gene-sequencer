@@ -100,7 +100,7 @@ class ChromosomePair{
 };
 ````
 
-**Specification for Input/Output**
+**Specification for input/output**
 
 The program allows a user to write and read chromosome data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
@@ -123,7 +123,7 @@ The program allows a user to write and read chromosome data to/from a file. Each
 		
 		````
 
-**Specification for Displaying Phenotype**
+**Specification for displaying phenotype**
 
 Display the phenotype - the program allows a user to view the phenotype of a chromosome (AnalyzeGenotype method). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes in the following format.
 
@@ -154,7 +154,7 @@ When a user of your Chromosome class does the following;
 		
 		````
 
-We want the the result (C3) to be the 'simulated result of the biological combining of two chromosomes - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
+We want the result (C3) to be the 'simulated result of the biological combining of two chromosomes - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
 
 
 ## Part B - Overview
