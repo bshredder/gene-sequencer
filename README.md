@@ -28,7 +28,9 @@ In the next part of the project you will use the classes you designed and implem
 
 To summarize, this is a programming assignment intended to practice object oriented design and programming (OOD/OOP). The theme of the assignment is loosely based on biology and technology specific to genetics. The theme is meant to be motivating and connect programming to real world problems. Please, don't get tripped up on the theme -- it is not necessary at all to understand genetics to program the assignment. Have fun!
 
-## Part A - Overview
+## Part A
+
+### Overview
 
 In Part A, you will design the classes that model a chromosome pair, test the classes, and organize the project into header and source files. The program uses Object Oriented Programming (OOP) concepts to model the problem. See diagram and class definitions below for the class architecture and public interfaces.
 
@@ -41,16 +43,16 @@ In Part A, you will design the classes that model a chromosome pair, test the cl
 This is a logical model vs a physical model. Genes are abstractions of positions on a chromosome. A gene is defined by its linear position in nucleotide units of measure. Allels are variants of the same gene encoded in each of the two chromosomes (diploid organism). In our logical model we represent a chromosome as a collection of genes - each having two alleles. 
 
 
-### Part A - Requirements
+### Requirements
 
 **Requirement #1 - Design and define the classes**
 
 Bulleted below are the minimum classes classes required to define. You are free to add additional classes and methods. For additional references, refer to "Diagram 2 - Class Relationships" and "Code Snippet 1 - ChromosomePair class"  
 
-    - class Allele
-    - class Gene
-    - class Chromosome 
-	- class PunneteSquare (extra credit)
+    * class Allele
+    * class Gene
+    * class Chromosome 
+	* class PunneteSquare (extra credit)
 
 
 ````
@@ -102,7 +104,7 @@ class ChromosomePair{
 
 The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
-    - 	The file format is a comma separated (csv) file that contains in each row the data for a gene. The
+    * The file format is a comma separated (csv) file that contains in each row the data for a gene. The
 		exact format in the order it should be written and read from the file for each row is;
 
 		````
@@ -110,7 +112,7 @@ The program allows a user to write and read chromosome pair data to/from a file.
 
 		````
 
-    - A specific example of the data for two (2) genes in csv format is:
+    * A specific example of the data for two (2) genes in csv format is:
 
 		````
  		UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG
@@ -140,9 +142,9 @@ We want the result (C3) to be the 'simulated result of the biological combining 
 **Requirement #5 - Separate each class into its own header (.h) and implementation (.cpp) files**
 
 
-- Use the correct header guards
-- Class defintions go into header files
--  Class method defintions (implementation) go into cpp files
+* Use the correct header guards
+* Class defintions go into header files
+* Class method defintions (implementation) go into cpp files
 
 
 **Requirement #6 - Archive project to your github account**
@@ -150,9 +152,15 @@ We want the result (C3) to be the 'simulated result of the biological combining 
 
 
 
-## Part B - Overview
+## Part B 
+
+### Overview
 
 Part B demonstrates how abstraction and encapusulation can be used to quickly assemble new components. In this part of the project you will reuse the classes you designed in Part A to 'assemble' a Gene Sequencer. The Gene Sequencer will provide the user with a basic user interface in the form of a menu, allow the user to import and export genetic data from a file, and simulate a 'power on self-test (POST) that is typical on an embedded device. The class definitions for the GeneSequencer class is provided below. You are free to add additional public or private methods and data, however, you must implement the specified methods in the class definition below;
+
+
+## Requirements
+
 
 **Requirement #7 - Design and define the Gene Sequencer class**
 
@@ -324,13 +332,13 @@ Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype
 
 Consult zybooks sections:
 
--   8.10 - 12 -- classes and classes with vectors
+* 8.10 - 12 -- classes and classes with vectors
 
--   8.18 -- operator overloading
+* 8.18 -- operator overloading
 
--   8.12 -- separate files for classes
+* 8.12 -- separate files for classes
 
--   10.1 - 2 -- filestreams
+* 10.1 - 2 -- filestreams
 
 **Partner rules**
 
