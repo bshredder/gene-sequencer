@@ -15,10 +15,12 @@ The first part of the project will focus on modeling the basic biology through O
 
 
 
+
 ![Image result for simple model chromosome gene
 allele](image1.jpeg)
 
 *Diagram 1 - Relationship of Alleles to Genes*
+
 
 
 
@@ -41,20 +43,14 @@ This is a logical model vs a physical model. Genes are abstractions of positions
 
 ### Part A - Requirements
 
-1.  Define and implement the classes that model a chromosome pair and its constituent parts.  You are free to add additional classes and methods.
+**Requirement #1 - Design and define the classes**
+
+Bulleted below are the minimum classes classes required to define. You are free to add additional classes and methods. For additional references, refer to "Diagram 2 - Class Relationships" and "Code Snippet 1 - ChromosomePair class"  
 
     - class Allele
     - class Gene
-    - class chromosome pair 
+    - class Chromosome 
 	- class PunneteSquare (extra credit)
-
-2.  Implement unit tests for each class.
-
-3.  Separate each class into its own header (.h) and implementation
-    (.cpp) files with correct header guards
-
-4.  Archive project to your github account
-
 
 
 ````
@@ -99,7 +95,10 @@ class ChromosomePair{
 
 ````
 
-**Specification for input/output methods**
+*Code Snippet 1 - ChromosomePair class*
+
+
+**Requirment #2 - Implement file input/output methods**
 
 The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
@@ -119,7 +118,7 @@ The program allows a user to write and read chromosome pair data to/from a file.
 		
 		````
 
-**Specification for overloading operator+**
+**Requirement #3 - overload the operator+**
 
 When a user of your chromosome pair class does the following;
 
@@ -136,11 +135,26 @@ When a user of your chromosome pair class does the following;
 
 We want the result (C3) to be the 'simulated result of the biological combining of two chromosome pair pairs - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
 
+**Requirement #4 - Implement unit tests for each class**
+
+**Requirement #5 - Separate each class into its own header (.h) and implementation (.cpp) files**
+
+
+- Use the correct header guards
+- Class defintions go into header files
+-  Class method defintions (implementation) go into cpp files
+
+
+**Requirement #6 - Archive project to your github account**
+
+
+
 
 ## Part B - Overview
 
 Part B demonstrates how abstraction and encapusulation can be used to quickly assemble new components. In this part of the project you will reuse the classes you designed in Part A to 'assemble' a Gene Sequencer. The Gene Sequencer will provide the user with a basic user interface in the form of a menu, allow the user to import and export genetic data from a file, and simulate a 'power on self-test (POST) that is typical on an embedded device. The class definitions for the GeneSequencer class is provided below. You are free to add additional public or private methods and data, however, you must implement the specified methods in the class definition below;
 
+**Requirement #7 - Design and define the Gene Sequencer class**
 
 ````
 // Simulates a gene sequencer
@@ -179,7 +193,7 @@ class GeneSequencer{
 
 ````
 
-**Specification of user menu**
+**Requirement #8 - Implement the user menu**
 
 
 Create a user menu that displays the following choices until user selects "Exit". 
@@ -192,29 +206,8 @@ Create a user menu that displays the following choices until user selects "Exit"
     - Exit
 
 
-**Specification for analyze gene method**
 
-Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene) In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
-
-		````
-		Gene 1
-
-		-   *Name: UH56*
-		-   *Genetic trait: Hair color*
-		-   *Expressed allele: Dark -- dominant *
-		-   *Nucleotide sequence: CATGTAC*
-
-		Gene 2 
-
-		...
-
-		````
-
-
-**Specification for create chromosome**
-
-
-*Here is an example of a valid user interaction output for the program:*
+**Here is an example of a valid user interaction output for the program:**
 
 			````
 			> MENU
@@ -306,6 +299,24 @@ Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype
 			> Thank you -- goodbye
 
 			````
+
+**Requirement #9 - Implement the analyze gene method**
+
+Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene) In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
+
+		````
+		Gene 1
+
+		-   *Name: UH56*
+		-   *Genetic trait: Hair color*
+		-   *Expressed allele: Dark -- dominant *
+		-   *Nucleotide sequence: CATGTAC*
+
+		Gene 2 
+
+		...
+
+		````
 
 
 
