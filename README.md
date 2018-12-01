@@ -4,9 +4,7 @@
 
 **Learning Objectives**
 
-This project provides: experience writing classes, using file streams,
-functions, references, and unit tests. It is also a review of flow
-control logic, selection, and looping.
+This project provides: Practice with object oriented design, experience writing classes, using file streams,functions, references, and unit tests. It is also a review of flow control logic, selection, and looping.
 
 **Summary**
 
@@ -21,7 +19,7 @@ chromosomes. Our simplified model of chromosome pairs will be
 collections of genes. Each gene will have two alleles -- one of these
 alleles will be dominant and therefore expressed. The other will be
 recessive and not expressed. When the Gene Sequencer analyzes the
-chromosome, the dominant alleles will be output as the genotype. The
+chromosome, the dominant alleles will be output as the phenotype. The
 image below shows the relationship of the chromosome pair, genes and
 alleles.
 
@@ -34,133 +32,35 @@ allele](image1.jpeg)
 
 
 
-The point of the assignment is to practice object oriented design and
-programming (OOD/OOP) The theme of the assignment loosely follows
-biological science and technology specific to genetics. Hopefully this
-gives the programming assignment an interesting theme for you. Please
-don't get tripped up on the theme -- it is not necessary to understand
-the biology to program the assignment.
+The point of the assignment is to practice object oriented design and programming (OOD/OOP) The theme of the assignment loosely follows biological science and technology specific to genetics. Hopefully this gives the programming assignment an interesting theme for you. However, please don't get tripped up on the theme -- it is not necessary to understand the biology to program the assignment.
 
-## Requirements - Part A
+## Part A - Overview
 
-1.  Create a user menu that displays a menu of choices until user
-    selects "Exit". The menu functionality should be written as a
-    function in main.cpp and contain at minimum the following choices;
-
-    - Create chromosome
-
-    - Analyze chromosome
-
-    - Output chromosome to file
-
-    - Input chromosome from file
-
-    - Combine chromosomes
-
-    - Exit
-
-2.  Design and define the program's classes. The program uses Object
-    Oriented Programming (OOP) concepts to model the problem. See
-    diagram below that shows the class architecture and public
-    interfaces. You are free to add additional classes and methods,
-    however, the program must define at minimum the following classes;
-
-    - Allele
-
-    - Gene
-
-    - Chromosome (or ChromosomePair)
-
-    - GeneSequencer
-
+In Part A, you will design the classes that model a chromosome, test the classes, and organize the project into header and source files. The program uses Object Oriented Programming (OOP) concepts to model the problem. See diagram and class definitions below for the class architecture and public interfaces.
 
 
 ![](image2.png)
 
 *Diagram 2 - Class Relationships*
 
-3.  Implement Input/Output functionality - the program allows a user to
-    write and read chromosome data to/from a file. Each class has
-    methods to either write to a file, read from a file or to do both.
 
-    - The file format is a comma separated (csv) file that contains in
-        each row the data for a gene.
+### Part A - Requirements
 
-    - The exact format in the order it should be written and read from
-        the file for each row is;
+1.  Define and implement the classes that model a chromosome and its constituent parts.  You are free to add additional classes and methods.
 
-````
-> *\<gene name\>, \<gene trait\>, \<alleleA variant\>, \<alleleA type\>,
-> \<alleleA nucleotide sequence\>, \<alleleB variant\>, \<allele
-> type\>,\<alleleB nucleotide sequence\>*
-````
+    - class Allele
+    - class Gene
+    - class Chromosome 
+	- class PunneteSquare (extra credit)
 
-    - A specific example of the data for two (2) genes in csv format is:
+2.  Implement unit tests for each class.
 
-````
-> *UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG*
-> *WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG*
-````
+3.  Separate each class into its own header (.h) and implementation
+    (.cpp) files with correct header guards
 
-4.  Display the phenotype - the program allows a user to view the
-    phenotype of a chromosome (AnalyzeGenotype method). In your program 
-	the phenotype is determined by selecting the dominant or 'expressed' allele of each
-    gene in the Chromosome and displaying the list of expressed genes in
-    the following format.
-
-````
-> *Gene 1*
-
--   *Name: UH56*
-
--   *Genetic trait: Hair color*
-
--   *Expressed allele: Dark -- dominant *
-
--   *Nucleotide sequence: CATGTAC*
-
-> *Gene 2 ...*
-````
+4.  Archive project to your github account
 
 
-## Requirements -- Part B
-
-Part B adds additional "advanced" functionality, and builds out a set of
-power on self-tests (POST tests) typical on an embedded device. The
-class definitions for the GeneSequencer and Chromosome classes are
-provided below. You are free to add additional public or private methods
-and data, however, you must implement the specified methods in the class
-definitions below;
-
-
-5.  Implement all remaining functionality described in the following
-    class definitions
-
-```
-class GeneSequencer{
-
-    public:
-
-        // chromosome factory
-        ChromosomePair  CreateChromosomePair();
-
-        // returns a chromosome object from data in \'filename\'
-        ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
-
-        // saves chromosome \'c\' data to file \'filename\'
-        void ExportChromosomePair(ChromosomePair c, const string& fileName = \"\");
-
-        // returns chromosome from \'x\' and \'y\' genes - allele selection based on punnet probablity
-        ChromosomePair  DoMeiosis(ChromosomePair x, ChromosomePair y);
-
-        // outputs phenotype (dominant alleles for each gene) in \'c\'
-        void SequenceChromosomePair(ChromosomePair c);
-
-        // executes all unit tests on each object. Returns true if all tests pass
-        bool PowerOnSelfTest();
-};
-
-````
 
 ````
 class ChromosomePair{
@@ -170,8 +70,8 @@ class ChromosomePair{
         // default constructor
         ChromosomePair();
 
-        // outputs genotype which is each dominant allele in each gene
-        void AnalyzeGenotype();     
+        // outputs pheonotype which is each dominant allele in each gene
+        void 	AnalyzePhenotype();     
 
         // configures this chromosome with data from filestream \'ifs\'
         void    InputFromFile(ifstream& ifs);
@@ -200,112 +100,210 @@ class ChromosomePair{
 };
 ````
 
+**Specification for Input/Output**
+The program allows a user to write and read chromosome data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
-6.  Implement unit tests for each class. Implement a "POST" or
-    PowerOnSelfTest() in the GeneSequencer class that will call each
-    classes unit tests.
+    - The file format is a comma separated (csv) file that contains in
+        each row the data for a gene.
 
-7.  Separate each class into its own header (.h) and implementation
-    (.cpp) file with correct header guards
+    - The exact format in the order it should be written and read from
+        the file for each row is;
 
-8.  Archive project to your github account
+		````
+		*<gene name\>, \<gene trait\>, \<alleleA variant\>, \<alleleA type\>, \<alleleA nucleotide sequence\>, \<alleleB variant\>, \<allele> type\>,\<alleleB nucleotide sequence\>*
+
+		````
+
+    - A specific example of the data for two (2) genes in csv format is:
+
+		````
+ 		*UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG*
+ 		*WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG*
+		
+		````
+
+**Specification for Displaying Phenotype**
+Display the phenotype - the program allows a user to view the phenotype of a chromosome (AnalyzeGenotype method). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes in the following format.
+
+		````
+		*Gene 1*
+
+		-   *Name: UH56*
+		-   *Genetic trait: Hair color*
+		-   *Expressed allele: Dark -- dominant *
+		-   *Nucleotide sequence: CATGTAC*
+
+		*Gene 2 ...*
+
+		````
+
+**Specification for overloading operator+**
+When a user of your Chromosome class does the following;
+
+		````
+		Chromosome C1, C2, C3;
+
+		...
+
+		// creates a new chromosome from two existing chromosmes
+		// select two (2) of the four (4) alleles from each gene 
+		C3 = C1 + C2;
+		
+		````
+
+We want the the result (C3) to be the 'simulated result of the biological combining of two chromosomes - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
+
+
+## Part B - Overview
+
+Part B demonstrates how abstraction and encapusulation can be used to quickly assemble new components. In this part of the project you will reuse the classes you designed in Part A to 'assemble' a Gene Sequencer. The Gene Sequencer will provide the user with a basic user interface in the form of a menu, allow the user to import and export genetic data from a file, and simulate a 'power on self-test (POST) that is typical on an embedded device. The class definitions for the GeneSequencer class is provided below. You are free to add additional public or private methods and data, however, you must implement the specified methods in the class definition below;
+
+
+````
+// Simulates a gene sequencer
+
+class GeneSequencer{
+
+    public:
+
+		// displayes menu to user
+		void DisplayUserMenu();
+
+        // executes all unit tests on each object. Returns true if all tests pass
+        bool PowerOnSelfTest();		
+
+	private:
+
+		Chromosome c;
+
+        // chromosome factory
+        ChromosomePair  CreateChromosomePair();
+
+        // returns a chromosome object from data in \'filename\'
+        ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
+
+        // saves chromosome \'c\' data to file \'filename\'
+        void ExportChromosomePair(ChromosomePair c, const string& fileName = \"\");
+
+        // returns chromosome from \'x\' and \'y\' genes - allele selection based on punnet probablity
+        ChromosomePair  DoMeiosis(ChromosomePair x, ChromosomePair y);
+
+        // outputs phenotype (dominant alleles for each gene) in \'c\'
+        void SequenceChromosomePair(ChromosomePair c);
+};
+
+````
+
+**Specification of user menu**
+
+1.  Create a user menu that displays the following choices until user
+    selects "Exit". 
+
+    - Create chromosome
+    - Analyze chromosome
+    - Output chromosome to file
+    - Input chromosome from file
+    - Combine chromosomes
+    - Exit
 
 
 
-**Sample Output**
+**Specification for CreateChromosome**
+
 
 *Here is an example of a valid user interaction output for the
 program:*
 
-````
-> MENU
->
-> 1 -- Create chromosome
->
-> 2 -- Analyze chromosome
->
-> 3 -- Output chromosome to file
->
-> 4 -- Input chromosome from file
->
-> 5 -- Combine chromosomes
->
-> 6 -- Exit
->
-> Please enter your choice (1 -- 5)
+			````
+			> MENU
+			>
+			> 1 -- Create chromosome
+			>
+			> 2 -- Analyze chromosome
+			>
+			> 3 -- Output chromosome to file
+			>
+			> 4 -- Input chromosome from file
+			>
+			> 5 -- Combine chromosomes
+			>
+			> 6 -- Exit
+			>
+			> Please enter your choice (1 -- 5)
 
-User selects menu item 1
+			User selects menu item 1
 
-> What is the name of the new gene? (e.g. TZ458)
->
-> *USER INPUT: UH56*
->
-> What is the gene trait? (e.g. eye color)
->
-> *USER INPUT: Hair Color*
->
-> What is the allele 1 variant ? (e.g. brown/blue/etc.)
->
-> *USER INPUT: Blonde*
->
-> What is allele 1 type? (e.g. dominant or recessive)
->
-> *USER INPUT: recessive*
->
-> What is allele 1 nucleotide sequence? (e.g. AGTC)
->
-> *USER INPUT: TTCC*
->
-> What is the allele 2 variant ? (e.g. brown/blue/etc.)
->
-> *USER INPUT: Dark*
->
-> What is allele 2 type? (e.g. dominant or recessive)
->
-> *USER INPUT: dominant*
->
-> What is allele 2 nucleotide sequence? (e.g. AGTC)
->
-> *USER INPUT: CCAGG*
->
-> Would you like to add a new gene? (y/n)
->
-> *USER INPUT: n*
+			> What is the name of the new gene? (e.g. TZ458)
+			>
+			> *USER INPUT: UH56*
+			>
+			> What is the gene trait? (e.g. eye color)
+			>
+			> *USER INPUT: Hair Color*
+			>
+			> What is the allele 1 variant ? (e.g. brown/blue/etc.)
+			>
+			> *USER INPUT: Blonde*
+			>
+			> What is allele 1 type? (e.g. dominant or recessive)
+			>
+			> *USER INPUT: recessive*
+			>
+			> What is allele 1 nucleotide sequence? (e.g. AGTC)
+			>
+			> *USER INPUT: TTCC*
+			>
+			> What is the allele 2 variant ? (e.g. brown/blue/etc.)
+			>
+			> *USER INPUT: Dark*
+			>
+			> What is allele 2 type? (e.g. dominant or recessive)
+			>
+			> *USER INPUT: dominant*
+			>
+			> What is allele 2 nucleotide sequence? (e.g. AGTC)
+			>
+			> *USER INPUT: CCAGG*
+			>
+			> Would you like to add a new gene? (y/n)
+			>
+			> *USER INPUT: n*
 
-User selects menu item 2
+			User selects menu item 2
 
-> Name: UH56
->
-> Genetic trait: Hair color
->
-> Expressed allele: Dark -- dominant
->
-> Nucleotide sequence: CCAGG
+			> Name: UH56
+			>
+			> Genetic trait: Hair color
+			>
+			> Expressed allele: Dark -- dominant
+			>
+			> Nucleotide sequence: CCAGG
 
-User selects menu item 3
+			User selects menu item 3
 
-What file would you like to import from?
+			What file would you like to import from?
 
-> *USER INPUT: test.txt*
->
-> *A chromosome object is created and available for analysis based on
-> test.txt*
+			> *USER INPUT: test.txt*
+			>
+			> *A chromosome object is created and available for analysis based on
+			> test.txt*
 
-User selects menu item 4
+			User selects menu item 4
 
-What file would you like to export to?
+			What file would you like to export to?
 
-> *USER INPUT: test.txt*
->
-> A line with the format described in the requirements is written to the
-> file test.txt, for example;
->
-> UH56,Hair color,Blonde,recessive,TTCC,Dark,dominant,CCAGG
+			> *USER INPUT: test.txt*
+			>
+			> A line with the format described in the requirements is written to the
+			> file test.txt, for example;
+			>
+			> UH56,Hair color,Blonde,recessive,TTCC,Dark,dominant,CCAGG
 
-User selects menu item 5
+			User selects menu item 5
 
-> Thank you -- goodbye
-````
+			> Thank you -- goodbye
+
+			````
 
 
 
