@@ -4,24 +4,15 @@
 
 **Learning Objectives**
 
-This project provides: Practice with object oriented design, experience writing classes, using file streams,functions, references, and unit tests. It is also a review of flow control logic, selection, and looping.
+This project has multiple parts that focus on different learning objectives. The first part provides: Practice developing abstract data types (ADTs) using object oriented design (OOD). You will be defining and implementing classes, using file streams, references, and writing unit tests. The second part builds on the first and provides experience using ADTs to model a system. It also provides practice implementing operator overloading and algorithm design. The entire program is also a review of flow control logic, selection, and looping.
 
 **Summary**
 
-The goal of this program is to author a "Gene Sequencer". Our gene
-sequencer will be a bit simpler than the real thing -- but it will be a
-great way to demonstrate how thinking about and modeling a complex
-process or machine can be done with object oriented programming (OOP).
+A Gene Sequencer is a scientific instrument used to automate the DNA sequencing process. Our gene
+sequencer will be a bit different than the real thing but it provides a (hopefully) fascinating theme for practicing object oriented design and programming. One of the many perks of software engineering is that it affords you the opportunity to dive into fascinating topics with subject matter experts from a range of fields that need your expertise to help them model their problems and translate them into software.  
 
-The Gene Sequencer will allow a user to create chromosome pair objects,
-analyze them and combine them (meiosis) to form new types of
-chromosomes. Our simplified model of chromosome pairs will be
-collections of genes. Each gene will have two alleles -- one of these
-alleles will be dominant and therefore expressed. The other will be
-recessive and not expressed. When the Gene Sequencer analyzes the
-chromosome, the dominant alleles will be output as the phenotype. The
-image below shows the relationship of the chromosome pair, genes and
-alleles.
+The first part of the project will focus on modeling the basic biology through OOD/OOP. You will code a simplified model of chromosomes. Chromosomes wil be designed as collections of genes. Each gene will contains alleles. Alleles will contain specific trait data, nucleotide sequences and will be tagged as either dominant or recessive. 
+
 
 
 ![Image result for simple model chromosome gene
@@ -31,8 +22,9 @@ allele](image1.jpeg)
 
 
 
+In the next part of the project you will use the classes you designed and implemented to model chromosomes, genes, and alleles to develop an abstraction of a Gene Sequencer. The Gene Sequencer will provide a basic UI (menu), allow a user to create chromosomes, import and export chromosomes from a file, analyze and combine (meiosis) them. 
 
-The point of the assignment is to practice object oriented design and programming (OOD/OOP) The theme of the assignment loosely follows biological science and technology specific to genetics. Hopefully this gives the programming assignment an interesting theme for you. However, please don't get tripped up on the theme -- it is not necessary to understand the biology to program the assignment.
+To summarize, this is a programming assignment intended to practice object oriented design and programming (OOD/OOP). The theme of the assignment is loosely based on biology and technology specific to genetics. The theme is meant to be motivating and connect programming to real world problems. Please, don't get tripped up on the theme -- it is not necessary at all to understand genetics to program the assignment. Have fun!
 
 ## Part A - Overview
 
@@ -63,14 +55,14 @@ In Part A, you will design the classes that model a chromosome, test the classes
 
 
 ````
-class ChromosomePair{
+class Chromosome{
 
     public:
 
         // default constructor
-        ChromosomePair();
+        Chromosome();
 
-        // outputs pheonotype which is each dominant allele in each gene
+        // outputs pheonotype -  each dominant allele in each gene
         void 	AnalyzePhenotype();     
 
         // configures this chromosome with data from filestream \'ifs\'
@@ -86,57 +78,42 @@ class ChromosomePair{
         Gene    FindGene(string n);
 
         // returns chromosome from \'x\' and \'y\' genes 
-		// allele selection based on either random selection or punnet probablity
-        ChromosomePair operator+(ChromosomePair rhs);
+		// allele selection based on either random selection or punnette probablity
+        Chromosome operator+(Chromosome& rhs);
+
+		// returns true if chromosomes are equivalent
+		bool operator==(Chromosme& rhs);
 
 		// tests basic functionality of class
         bool RunUnitTests();
 
     private:
 
-        vector\<Gene\>    genes;
+        vector<Gene>    genes;
         string          fileName;
 
 };
+
 ````
 
-**Specification for input/output**
+**Specification for input/output methods**
 
 The program allows a user to write and read chromosome data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
-    - The file format is a comma separated (csv) file that contains in
-        each row the data for a gene.
-
-    - The exact format in the order it should be written and read from
-        the file for each row is;
+    - 	The file format is a comma separated (csv) file that contains in each row the data for a gene. The
+		exact format in the order it should be written and read from the file for each row is;
 
 		````
-		*<gene name\>, \<gene trait\>, \<alleleA variant\>, \<alleleA type\>, \<alleleA nucleotide sequence\>, \<alleleB variant\>, \<allele> type\>,\<alleleB nucleotide sequence\>*
+		<gene name>, <gene trait>, <alleleA variant>, <alleleA type>, <alleleA nucleotide sequence>, <alleleB variant>, <allele> type>, <alleleB nucleotide sequence>
 
 		````
 
     - A specific example of the data for two (2) genes in csv format is:
 
 		````
- 		*UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG*
- 		*WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG*
+ 		UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG
+ 		WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG
 		
-		````
-
-**Specification for displaying phenotype**
-
-Display the phenotype - the program allows a user to view the phenotype of a chromosome (AnalyzeGenotype method). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes in the following format.
-
-		````
-		*Gene 1*
-
-		-   *Name: UH56*
-		-   *Genetic trait: Hair color*
-		-   *Expressed allele: Dark -- dominant *
-		-   *Nucleotide sequence: CATGTAC*
-
-		*Gene 2 ...*
-
 		````
 
 **Specification for overloading operator+**
@@ -172,6 +149,8 @@ class GeneSequencer{
 		// displayes menu to user
 		void DisplayUserMenu();
 
+		void AnalyzeChromosome();
+
         // executes all unit tests on each object. Returns true if all tests pass
         bool PowerOnSelfTest();		
 
@@ -179,8 +158,8 @@ class GeneSequencer{
 
 		Chromosome c;
 
-        // chromosome factory
-        ChromosomePair  CreateChromosomePair();
+        // Creates a chromosome object
+        Chromosome  CreateChromosome();
 
         // returns a chromosome object from data in \'filename\'
         ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
@@ -210,8 +189,26 @@ Create a user menu that displays the following choices until user selects "Exit"
     - Exit
 
 
+**Specification for analyze gene method**
 
-**Specification for CreateChromosome**
+Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene) In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
+
+		````
+		Gene 1
+
+		-   *Name: UH56*
+		-   *Genetic trait: Hair color*
+		-   *Expressed allele: Dark -- dominant *
+		-   *Nucleotide sequence: CATGTAC*
+
+		Gene 2 
+
+		...
+
+		````
+
+
+**Specification for create chromosome**
 
 
 *Here is an example of a valid user interaction output for the program:*
@@ -353,7 +350,7 @@ If all requirements are met you will receive 100 percent.
 
 **Extra credit**
 
-Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities.
+Up to five (5) extra points for implmenting the Chromosome overloaded operator+ using a Punnette Square class. The Punnet square class will correctly generate the probabilities of each possible allele pairing. The operator+ will determine the resultant allele pair based on the Punnett Square probabilities for the four (4) alleles.
 
 ![](punnet2.jpg)
 
