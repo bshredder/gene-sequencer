@@ -101,6 +101,7 @@ class ChromosomePair{
 ````
 
 **Specification for Input/Output**
+
 The program allows a user to write and read chromosome data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
     - The file format is a comma separated (csv) file that contains in
@@ -123,6 +124,7 @@ The program allows a user to write and read chromosome data to/from a file. Each
 		````
 
 **Specification for Displaying Phenotype**
+
 Display the phenotype - the program allows a user to view the phenotype of a chromosome (AnalyzeGenotype method). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes in the following format.
 
 		````
@@ -138,6 +140,7 @@ Display the phenotype - the program allows a user to view the phenotype of a chr
 		````
 
 **Specification for overloading operator+**
+
 When a user of your Chromosome class does the following;
 
 		````
@@ -196,8 +199,8 @@ class GeneSequencer{
 
 **Specification of user menu**
 
-1.  Create a user menu that displays the following choices until user
-    selects "Exit". 
+
+Create a user menu that displays the following choices until user selects "Exit". 
 
     - Create chromosome
     - Analyze chromosome
@@ -211,8 +214,7 @@ class GeneSequencer{
 **Specification for CreateChromosome**
 
 
-*Here is an example of a valid user interaction output for the
-program:*
+*Here is an example of a valid user interaction output for the program:*
 
 			````
 			> MENU
