@@ -104,27 +104,27 @@ class ChromosomePair{
 
 The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
 
-    * The file format is a comma separated (csv) file that contains in each row the data for a gene. The
+* The file format is a comma separated (csv) file that contains in each row the data for a gene. The
 		exact format in the order it should be written and read from the file for each row is;
 
-		````
+````
 		<gene name>, <gene trait>, <alleleA variant>, <alleleA type>, <alleleA nucleotide sequence>, <alleleB variant>, <allele> type>, <alleleB nucleotide sequence>
 
-		````
+````
 
-    * A specific example of the data for two (2) genes in csv format is:
+* A specific example of the data for two (2) genes in csv format is:
 
-		````
+````
  		UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG
  		WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG
 		
-		````
+````
 
 **Requirement #3 - overload the operator+**
 
 When a user of your chromosome pair class does the following;
 
-		````
+````
 		ChromosomePair C1, C2, C3;
 
 		...
@@ -133,7 +133,7 @@ When a user of your chromosome pair class does the following;
 		// select two (2) of the four (4) alleles from each gene 
 		C3 = C1 + C2;
 		
-		````
+````
 
 We want the result (C3) to be the 'simulated result of the biological combining of two chromosome pair pairs - mieosis. The minimal implementation will select two of the four alleles based on random selection. For extra points you can implement a more complicated and biologically accurate punnette probablity model.
 
@@ -206,18 +206,18 @@ class GeneSequencer{
 
 Create a user menu that displays the following choices until user selects "Exit". 
 
-    - Create chromosome
-    - Analyze chromosome
-    - Output chromosome to file
-    - Input chromosome from file
-    - Combine chromosome pairs
-    - Exit
+* Create chromosome
+* Analyze chromosome
+* Output chromosome to file
+* Input chromosome from file
+* Combine chromosome pairs
+* Exit
 
 
 
 **Here is an example of a valid user interaction output for the program:**
 
-			````
+````
 			> MENU
 			>
 			> 1 -- Create chromosome
@@ -306,13 +306,13 @@ Create a user menu that displays the following choices until user selects "Exit"
 
 			> Thank you -- goodbye
 
-			````
+````
 
 **Requirement #9 - Implement the analyze gene method**
 
 Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene) In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
 
-		````
+````
 		Gene 1
 
 		-   *Name: UH56*
@@ -324,7 +324,7 @@ Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype
 
 		...
 
-		````
+````
 
 
 
