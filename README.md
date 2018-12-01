@@ -49,10 +49,10 @@ This is a logical model vs a physical model. Genes are abstractions of positions
 
 Bulleted below are the minimum classes classes required to define. You are free to add additional classes and methods. For additional references, refer to "Diagram 2 - Class Relationships" and "Code Snippet 1 - ChromosomePair class"  
 
-    * class Allele
-    * class Gene
-    * class Chromosome 
-	* class PunneteSquare (extra credit)
+* class Allele
+* class Gene
+* class Chromosome 
+* class PunneteSquare (extra credit)
 
 
 ````
