@@ -313,16 +313,16 @@ Create a user menu that displays the following choices until user selects "Exit"
 Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
 
 ````
-		Gene 1
+Gene 1
 
-		-   *Name: UH56*
-		-   *Genetic trait: Hair color*
-		-   *Expressed allele: Dark -- dominant *
-		-   *Nucleotide sequence: CATGTAC*
+	Name: UH56
+	Genetic trait: Hair color
+	Expressed allele: Dark -- dominant 
+	Nucleotide sequence: CATGTAC
 
-		Gene 2 
+Gene 2 
 
-		...
+...
 
 ````
 
