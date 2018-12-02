@@ -218,93 +218,91 @@ Create a user menu that displays the following choices until user selects "Exit"
 **Here is an example of a valid user interaction output for the program:**
 
 ````
-			> MENU
-			>
-			> 1 -- Create chromosome
-			>
-			> 2 -- Analyze chromosome
-			>
-			> 3 -- Output chromosome to file
-			>
-			> 4 -- Input chromosome from file
-			>
-			> 5 -- Combine chromosome pairs
-			>
-			> 6 -- Exit
-			>
-			> Please enter your choice (1 -- 5)
+MENU
 
-			User selects menu item 1
+1 -- Create chromosome
 
-			> What is the name of the new gene? (e.g. TZ458)
-			>
-			> *USER INPUT: UH56*
-			>
-			> What is the gene trait? (e.g. eye color)
-			>
-			> *USER INPUT: Hair Color*
-			>
-			> What is the allele 1 variant ? (e.g. brown/blue/etc.)
-			>
-			> *USER INPUT: Blonde*
-			>
-			> What is allele 1 type? (e.g. dominant or recessive)
-			>
-			> *USER INPUT: recessive*
-			>
-			> What is allele 1 nucleotide sequence? (e.g. AGTC)
-			>
-			> *USER INPUT: TTCC*
-			>
-			> What is the allele 2 variant ? (e.g. brown/blue/etc.)
-			>
-			> *USER INPUT: Dark*
-			>
-			> What is allele 2 type? (e.g. dominant or recessive)
-			>
-			> *USER INPUT: dominant*
-			>
-			> What is allele 2 nucleotide sequence? (e.g. AGTC)
-			>
-			> *USER INPUT: CCAGG*
-			>
-			> Would you like to add a new gene? (y/n)
-			>
-			> *USER INPUT: n*
+2 -- Analyze chromosome
+			
+3 -- Output chromosome to file
 
-			User selects menu item 2
+4 -- Input chromosome from file
+			
+5 -- Combine chromosome pairs
+			
+6 -- Exit
+			
+Please enter your choice (1 -- 5)
 
-			> Name: UH56
-			>
-			> Genetic trait: Hair color
-			>
-			> Expressed allele: Dark -- dominant
-			>
-			> Nucleotide sequence: CCAGG
+	*User selects menu item 1
 
-			User selects menu item 3
+What is the name of the new gene? (e.g. TZ458)
+			
+	*USER INPUT: UH56
+			
+What is the gene trait? (e.g. eye color)
+			
+	*USER INPUT: Hair Color
+			
+What is the allele 1 variant ? (e.g. brown/blue/etc.)
+			
+	*USER INPUT: Blonde
+			
+What is allele 1 type? (e.g. dominant or recessive)
+			
+	*USER INPUT: recessive
+			
+What is allele 1 nucleotide sequence? (e.g. AGTC)
+			
+	*USER INPUT: TTCC
+			
+What is the allele 2 variant ? (e.g. brown/blue/etc.)
+			
+	*USER INPUT: Dark
+			
+What is allele 2 type? (e.g. dominant or recessive)
+			
+	*USER INPUT: dominant
+			
+What is allele 2 nucleotide sequence? (e.g. AGTC)
+			
+	*USER INPUT: CCAGG
+			
+Would you like to add a new gene? (y/n)
+			
+	*USER INPUT: n
 
-			What file would you like to import from?
+	*User selects menu item 2
 
-			> *USER INPUT: test.txt*
-			>
-			> *A chromosome pair object is created and available for analysis based on
-			> test.txt*
+Name: UH56
+			
+Genetic trait: Hair color
+			
+Expressed allele: Dark -- dominant
+			
+Nucleotide sequence: CCAGG
 
-			User selects menu item 4
+	*User selects menu item 3
 
-			What file would you like to export to?
+What file would you like to import from?
 
-			> *USER INPUT: test.txt*
-			>
-			> A line with the format described in the requirements is written to the
-			> file test.txt, for example;
-			>
-			> UH56,Hair color,Blonde,recessive,TTCC,Dark,dominant,CCAGG
+	*USER INPUT: test.txt
+			
+A chromosome pair object is created and available for analysis based on test.txt
 
-			User selects menu item 5
+	*User selects menu item 4
 
-			> Thank you -- goodbye
+What file would you like to export to?
+
+	*USER INPUT: test.txt
+			
+A line with the format described in the requirements is written to the file test.txt, for example;
+			
+UH56,Hair color,Blonde,recessive,TTCC,Dark,dominant,CCAGG
+
+	*User selects menu item 5
+
+Thank you -- goodbye
 
 ````
 
