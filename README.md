@@ -4,7 +4,7 @@
 
 **Learning Objectives**
 
-This project has multiple parts that focus on different learning objectives. the first part provides: Practice developing abstract data types (ADTs) using object oriented design (OOD). You will be defining and implementing classes, using file streams, references, and writing unit tests. The second part builds on the first and provides experience using ADTs to model a system. It also provides practice implementing operator overloading and algorithm design. The entire program is also a review of flow control logic, selection, and looping.
+This project has multiple parts that focus on different learning objectives. The first part provides practice developing abstract data types (ADTs) using object oriented design (OOD). You will be defining and implementing classes that use file streams, references, and unit tests. The second part provides experience using the models you encapsulated int abstract data types to model a system. It also provides practice implementing operator overloading as well as algorithm design. The entire program is a good review of flow control logic, selection, vector usage and loops.
 
 **Summary**
 
@@ -47,7 +47,7 @@ This is a logical model vs a physical model. Genes are abstractions of positions
 
 **Requirement #1 - Design and define the classes**
 
-Bulleted below are the minimum classes classes required to define. You are free to add additional classes and methods. For additional references, refer to "Diagram 2 - Class Relationships" and "Code Snippet 1 - ChromosomePair class"  
+Bulleted below are the minimum classes you are required to define. You are free to add additional classes and methods. For additional information, refer to "Diagram 2 - Class Relationships" and "Code Snippet 1 - ChromosomePair class"  
 
 * class Allele
 * class Gene
@@ -75,14 +75,13 @@ class ChromosomePair{
         // adds a new Gene object \'g\' to a collection in this object
         void    AddGene(Gene g);
 
-        // returns a Gene object that matches a Gene with name \'n\'
+       	// returns a Gene object that matches a Gene with name \'n\'
         Gene    FindGene(string n);
 
-        // returns chromosome pair from \'x\' and \'y\' genes 
-		// allele selection based on either random selection or punnette probablity
+       	// returns chrmosome from this and rhs - allele random selection or punnette probablity (optional)
         ChromosomePair operator+(ChromosomePair& rhs);
 
-		// returns true if chromosome pairs are equivalent
+       	// returns true if chromosome pairs are equivalent
 		bool operator==(Chromosme& rhs);
 
 		// tests basic functionality of class
@@ -102,36 +101,36 @@ class ChromosomePair{
 
 **Requirment #2 - Implement file input/output methods**
 
-The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both.
+The program allows a user to write and read chromosome pair data to/from a file. Each class has methods to either write to a file, read from a file or to do both. 
 
-* The file format is a comma separated (csv) file that contains in each row the data for a gene. The
-		exact format in the order it should be written and read from the file for each row is;
-
-````
-		<gene name>, <gene trait>, <alleleA variant>, <alleleA type>, <alleleA nucleotide sequence>, <alleleB variant>, <allele> type>, <alleleB nucleotide sequence>
+* The file format is a comma separated (csv) file that contains in each row the data for a gene. The exact format in the order it should be written and read from the file for each row is;
 
 ````
-
-* A specific example of the data for two (2) genes in csv format is:
+<gene name>, <gene trait>, <alleleA variant>, <alleleA type>, <alleleA nucleotide sequence>, 
+<alleleB variant>, <allele> type>, <alleleB nucleotide sequence>
 
 ````
- 		UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG
- 		WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG
+
+* A specific example of the data for two (2) genes in csv format is below. By reading in each row of the file, a chromosome with as many genes as rows can be created.
+
+````
+UH56,hair color,blonde,recessive,TTCC,Dark,dominant,CCAGG
+WPM987,Cancer-L,High,recessive,TCGC,Low,dominant,CATGG
 		
 ````
 
-**Requirement #3 - overload the operator+**
+**Requirement #3 - overload the operator+ and ==**
 
-When a user of your chromosome pair class does the following;
+For a chromosome, the addition operator will be a shorthand way to combine two chromosomes. This will (kindof) simulate meiosis by selecting two of the four possible allelles. For example, when a user of your chromosome pair class does the following;
 
 ````
-		ChromosomePair C1, C2, C3;
+ChromosomePair C1, C2, C3;
 
-		...
+	...
 
-		// creates a new chromosome pair from two existing chromosmes
-		// select two (2) of the four (4) alleles from each gene 
-		C3 = C1 + C2;
+// creates a new chromosome pair from two existing chromosmes
+// select two (2) of the four (4) alleles from each gene 
+C3 = C1 + C2;
 		
 ````
 
@@ -156,7 +155,7 @@ We want the result (C3) to be the 'simulated result of the biological combining 
 
 ### Overview
 
-Part B demonstrates how abstraction and encapusulation can be used to quickly assemble new components. In this part of the project you will reuse the classes you designed in Part A to 'assemble' a Gene Sequencer. The Gene Sequencer will provide the user with a basic user interface in the form of a menu, allow the user to import and export genetic data from a file, and simulate a 'power on self-test (POST) that is typical on an embedded device. The class definitions for the GeneSequencer class is provided below. You are free to add additional public or private methods and data, however, you must implement the specified methods in the class definition below;
+Part B demonstrates how abstraction and encapusulation can be used to quickly assemble new components. In this part of the project you will reuse the classes you designed in Part A to 'assemble' a Gene Sequencer. The Gene Sequencer will provide the user with a basic user interface in the form of a menu, allow the user to import and export genetic data from a file, and simulate a 'power on self-test' (POST) that is typical on an embedded device. The class definition for the GeneSequencer class is provided below. You are free to add additional public or private methods and data. However, you are required to implement the specified methods in the class definition below;
 
 
 ## Requirements
@@ -171,16 +170,17 @@ class GeneSequencer{
 
     public:
 
-		// displayes menu to user
-		void DisplayUserMenu();
+	// displayes menu to user
+	void DisplayUserMenu();
 
-		void AnalyzeChromosomePair();
+	// displays the dominant allele of each gene in chromosome
+	void AnalyzeChromosomePair();
 
         // executes all unit tests on each object. Returns true if all tests pass
         bool PowerOnSelfTest();		
 
 	private:
-
+	
 		ChromosomePair c;
 
         // Creates a ChromosomePair object
@@ -310,7 +310,7 @@ Create a user menu that displays the following choices until user selects "Exit"
 
 **Requirement #9 - Implement the analyze gene method**
 
-Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene) In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
+Analyzing a gene for our gene seqencer is equivalent to displaying the phenotype (the dominant allele for each gene). In your program the phenotype is determined by selecting the dominant or 'expressed' allele of each gene in the Chromosome and displaying the list of expressed genes as in the following example.
 
 ````
 		Gene 1
@@ -362,8 +362,7 @@ receive 100 percent.
 	- Your code does not compile to completion.
 
 2.  You will receive up to ten points off if compiling your code
-    produces *any* warnings, or has incorrect use of const(s) or
-    references.
+    produces *any* warnings.
 
 3.  You will receive up to ten points off for each requirement your code
     does not meet, (please see requirements definition above).
