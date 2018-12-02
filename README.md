@@ -176,15 +176,15 @@ class GeneSequencer{
 	// displays the dominant allele of each gene in chromosome
 	void AnalyzeChromosomePair();
 
-        // executes all unit tests on each object. Returns true if all tests pass
-        bool PowerOnSelfTest();		
+    // executes all unit tests on each object. Returns true if all tests pass
+    bool PowerOnSelfTest();		
+
+    // Creates a ChromosomePair object
+    ChromosomePair  CreateChromosomePair();
 
 	private:
 	
 		ChromosomePair c;
-
-        // Creates a ChromosomePair object
-        ChromosomePair  CreateChromosomePair();
 
         // returns a ChromosomePair object from data in \'filename\'
         ChromosomePair  ImportChromosomePair(const string& fileName = \"\");
